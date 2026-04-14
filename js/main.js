@@ -1,54 +1,4 @@
-/* ==========================================
-   HERO SLIDER
-   ========================================== */
-const heroSlider = {
-  slides: document.querySelectorAll('.hero-slide'),
-  counter: document.getElementById('heroCounter'),
-  current: 0,
-  total: 0,
-  interval: null,
-  delay: 5000,
-
-  init() {
-    this.total = this.slides.length;
-    if (this.total === 0) return;
-    this.startAutoPlay();
-    document.getElementById('heroNext').addEventListener('click', () => this.next());
-    document.getElementById('heroPrev').addEventListener('click', () => this.prev());
-  },
-
-  goTo(index) {
-    this.slides[this.current].classList.remove('active');
-    this.current = (index + this.total) % this.total;
-    this.slides[this.current].classList.add('active');
-    this.updateCounter();
-  },
-
-  next() {
-    this.goTo(this.current + 1);
-    this.resetAutoPlay();
-  },
-
-  prev() {
-    this.goTo(this.current - 1);
-    this.resetAutoPlay();
-  },
-
-  updateCounter() {
-    const num = String(this.current + 1).padStart(2, '0');
-    const total = String(this.total).padStart(2, '0');
-    this.counter.textContent = `${num} of ${total}`;
-  },
-
-  startAutoPlay() {
-    this.interval = setInterval(() => this.goTo(this.current + 1), this.delay);
-  },
-
-  resetAutoPlay() {
-    clearInterval(this.interval);
-    this.startAutoPlay();
-  }
-};
+/* Hero slider removed — single static background image */
 
 /* ==========================================
    MENU TOGGLE
@@ -250,7 +200,6 @@ const toTop = {
    INIT
    ========================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  heroSlider.init();
   menu.init();
   header.init();
   lightbox.init();
